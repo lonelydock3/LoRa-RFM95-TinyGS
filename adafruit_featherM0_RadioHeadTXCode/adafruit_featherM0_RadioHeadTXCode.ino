@@ -33,7 +33,7 @@ void setup()
   digitalWrite(RFM95_RST, HIGH);
   delay(10);
 
-  Serial.print(F("[RF69] Initializing ... "));
+  Serial.print(F("[RF95] Initializing ... "));
   int state = radio.begin(915.0, 250.0, 10, 5);
   if (state == ERR_NONE) {
     Serial.println(F("success!"));
