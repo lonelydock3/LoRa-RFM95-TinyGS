@@ -34,7 +34,8 @@ void setup()
   delay(10);
 
   Serial.print(F("[RF95] Initializing ... "));
-  int state = radio.begin(915.0, 250.0, 10, 5);
+//  int state = radio.begin(915.0, 250.0, 10, 5);
+  int state = radio.begin(915.0, 250.0, 10, 5, 18, 5);
   if (state == ERR_NONE) {
     Serial.println(F("success!"));
   } else {
@@ -43,15 +44,15 @@ void setup()
     while (true);
   }
 
-//  Serial.print(F("[RF95] Setting frequency ... "));
-//    state = radio.setFrequency(5, true);
-//    if (state == ERR_NONE) {
-//      Serial.println(F("success!"));
-//    } else {
-//      Serial.print(F("failed, code "));
-//      Serial.println(state);
-//      while (true);
-//    }
+  Serial.print(F("[RF95] Setting frequency ... "));
+    state = radio.setFrequency(915.0);
+    if (state == ERR_NONE) {
+      Serial.println(F("success!"));
+    } else {
+      Serial.print(F("failed, code "));
+      Serial.println(state);
+      while (true);
+    }
 
 }
 
@@ -60,13 +61,12 @@ void loop()
   Serial.print(F("[RF95] Transmitting packet ... "));
 
   // you can transmit C-string or Arduino string up to 64 characters long
-  int state = radio.transmit("Hello World!");
+//  int state = radio.transmit("Hello World!");
 
   // you can also transmit byte array up to 64 bytes long
-  /*
-    byte byteArr[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
-    int state = radio.transmit(byteArr, 8);
-  */
+  
+  byte byteArr[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
+  int state = radio.transmit(byteArr, 8);
 
   if (state == ERR_NONE) {
     // the packet was successfully transmitted
