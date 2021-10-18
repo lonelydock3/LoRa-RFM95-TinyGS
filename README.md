@@ -33,9 +33,11 @@ Open the "adafruit_featherM0_RadioHeadTXCode" in Arduino IDE.  You will first ne
 
 **Next Steps**
 
-From here you should be able to see that your basestation GUI says that the ESP32 TTGO LoRa V1 board is receiving packets from the Adafruit Feather M0.  There are two issues currently: 
+From here you should be able to see that your basestation GUI says that the ESP32 TTGO LoRa V1 board is receiving packets from the Adafruit Feather M0. NOTE: Make sure in "Configure Parameters" of the TinyGS Dashboard, the "Allow Automatic Tuning" box is UNCHECKED.
+
+There is one issue currently: 
 
 * The packets are not readable on TinyGS
-* The TinyGS basestation that you setup will often switch over to listening to a different satellites parameters.  If this happens you must go to "Configure Parameters" and then click "Apply" again at the bottom.  This will reset the parameters, so that your basestation will keep listening to the Adafruit Feather M0.  
+* The TinyGS basestation that you setup will often switch over to listening to a different satellites parameters.  If this happens you must go to "Configure Parameters" and then click "Apply" again at the bottom.  This will reset the parameters, so that your basestation will keep listening to the Adafruit Feather M0. --> FIXED - On your TinyGS dashboard, in "Configure Parameters", make sure "Allow Automatic Tuning" is UNCHECKED
 
 I am currently working on fixing these two issues and will push updates soon!
