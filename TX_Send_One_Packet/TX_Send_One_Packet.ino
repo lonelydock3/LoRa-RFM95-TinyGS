@@ -1,5 +1,6 @@
 //TX
 // -*- mode: C++ -*-
+//On RESET, send one packet
 
 
 #include <SPI.h>
@@ -54,11 +55,7 @@ void setup()
       while (true);
     }
 
-}
-
-void loop()
-{
-  Serial.print(F("[RF95] Transmitting packet ... "));
+    Serial.print(F("[RF95] Transmitting packet ... "));
 
   // you can transmit C-string or Arduino string up to 64 characters long
 //  int state = radio.transmit("Hello World!");
@@ -66,22 +63,28 @@ void loop()
   // you can also transmit byte array up to 64 bytes long
   
   byte byteArr[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
-  int state = radio.transmit(byteArr, 8);
+  int state2 = radio.transmit(byteArr, 8);
 
-  if (state == ERR_NONE) {
+  if (state2 == ERR_NONE) {
     // the packet was successfully transmitted
     Serial.println(F("success!"));
 
-  } else if (state == ERR_PACKET_TOO_LONG) {
+  } else if (state2 == ERR_PACKET_TOO_LONG) {
     // the supplied packet was longer than 64 bytes
     Serial.println(F("too long!"));
 
   } else {
     // some other error occurred
     Serial.print(F("failed, code "));
-    Serial.println(state);
+    Serial.println(state2);
 
   }
+
+}
+
+void loop()
+{
+  
 
   // wait for a second before transmitting again
   delay(1000);
