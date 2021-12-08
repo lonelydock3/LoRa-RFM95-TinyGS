@@ -58,12 +58,12 @@ void setup()
     Serial.print(F("[RF95] Transmitting packet ... "));
 
   // you can transmit C-string or Arduino string up to 64 characters long
-//  int state = radio.transmit("Hello World!");
+  int state2 = radio.transmit("Hello World!");
 
   // you can also transmit byte array up to 64 bytes long
   
-  byte byteArr[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
-  int state2 = radio.transmit(byteArr, 8);
+//  byte byteArr[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
+//  int state2 = radio.transmit(byteArr, 8);
 
   if (state2 == ERR_NONE) {
     // the packet was successfully transmitted

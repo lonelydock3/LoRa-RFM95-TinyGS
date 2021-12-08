@@ -67,6 +67,14 @@ void setup() {
   SPI.begin(SCK, MISO, MOSI, SS);
   //setup LoRa transceiver module
   LoRa.setPins(SS, RST, DIO0);
+
+  LoRa.setSpreadingFactor(10);
+  LoRa.setSignalBandwidth(250.0);
+  LoRa.setCodingRate4(5);
+  LoRa.setPreambleLength(8);
+  LoRa.setSyncWord(18);
+  LoRa.enableCrc();
+  LoRa.setGain(0);
   
   if (!LoRa.begin(BAND)) {
     Serial.println("Starting LoRa failed!");

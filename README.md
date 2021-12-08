@@ -37,9 +37,14 @@ From here you should be able to see that your basestation GUI says that the ESP3
 
 **NOTE: Make sure in "Configure Parameters" of the TinyGS Dashboard, the "Allow Automatic Tuning" box is UNCHECKED.
 
-### There is one issue currently: 
+## Parameters
 
-* The packets are not readable on TinyGS
+The following parameters should be the same (if possible) between the TinyGS basestation and the radio device that you are transmitting with:
+
+    {"mode":"LoRa","freq":915.0,"bw":250.0,"sf":10,"cr":5,"sw":18,"pwr":5,"cl":120,"pl":8,"gain":0,"crc":false,"fldro":2,"sat":"Norbi","NORAD":46494}
+
+### Past Issues 
+
+* The packets are not readable on TinyGS --> FIXED - the CRC parameter on the TinyGS basestation must be set to "false"
 * The TinyGS basestation that you setup will often switch over to listening to a different satellites parameters.  If this happens you must go to "Configure Parameters" and then click "Apply" again at the bottom.  This will reset the parameters, so that your basestation will keep listening to the Adafruit Feather M0. --> FIXED - On your TinyGS dashboard, in "Configure Parameters", make sure "Allow Automatic Tuning" is UNCHECKED
 
-I am currently working on fixing this issue and will push updates soon!
