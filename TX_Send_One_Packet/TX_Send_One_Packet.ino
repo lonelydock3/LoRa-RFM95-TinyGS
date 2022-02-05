@@ -57,8 +57,20 @@ void setup()
 
     Serial.print(F("[RF95] Transmitting packet ... "));
 
+    state = radio.setCRC(true, true); 
+    if (state == ERR_NONE) {
+      Serial.println(F("success!"));
+    } else {
+      Serial.print(F("CRC initialization error"));
+      Serial.println(state);
+      while (true);
+    }
+
   // you can transmit C-string or Arduino string up to 64 characters long
   int state2 = radio.transmit("Hello World!");
+
+  // testing with CRC value
+//  int state2 = radio.transmit("A");
 
   // you can also transmit byte array up to 64 bytes long
   
