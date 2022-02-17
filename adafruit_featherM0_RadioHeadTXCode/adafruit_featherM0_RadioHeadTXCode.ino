@@ -14,8 +14,8 @@
 //#define RF95_FREQ 436.7
 
 // Singleton instance of the radio driver
-//RF95 rf95 = new Module(RFM95_CS, RFM95_INT);
 RFM95 radio = new Module(RFM95_CS, RFM95_INT, RFM95_RST);
+
 void setup() 
 {
   pinMode(RFM95_RST, OUTPUT);
@@ -34,7 +34,7 @@ void setup()
   delay(10);
 
   Serial.print(F("[RF95] Initializing ... "));
-//  int state = radio.begin(915.0, 250.0, 10, 5);
+  // begin(freq, bw, sf, cr, syncWord, power, preambleLength, gain)
   int state = radio.begin(915.0, 250.0, 10, 5, 18, 5, 8, 0);
   if (state == ERR_NONE) {
     Serial.println(F("success!"));
@@ -44,29 +44,40 @@ void setup()
     while (true);
   }
 
+  // saftey check to make sure frequency is at 915
   Serial.print(F("[RF95] Setting frequency ... "));
-    state = radio.setFrequency(915.0);
-    if (state == ERR_NONE) {
-      Serial.println(F("success!"));
-    } else {
-      Serial.print(F("failed, code "));
-      Serial.println(state);
-      while (true);
-    }
+  state = radio.setFrequency(915.0);
+  if (state == ERR_NONE) {
+    Serial.println(F("success!"));
+  } else {
+    Serial.print(F("failed, code "));
+    Serial.println(state);
+    while (true);
+  }
+
+  // set CRC parameter to true so it matches the CRC parameter on the TinyGS side
+  Serial.print(F("[RF95] Setting CRC parameter ... "));
+  state = radio.setCRC(true, true); 
+  if (state == ERR_NONE) {
+    Serial.println(F("success!"));
+  } else {
+    Serial.print(F("CRC initialization error"));
+    Serial.println(state);
+    while (true);
+  }
 
 }
 
 void loop()
 {
+  // packet transmission
   Serial.print(F("[RF95] Transmitting packet ... "));
-
   // you can transmit C-string or Arduino string up to 64 characters long
-//  int state = radio.transmit("Hello World!");
+  int state = radio.transmit("Hello World!");
 
   // you can also transmit byte array up to 64 bytes long
-  
-  byte byteArr[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
-  int state = radio.transmit(byteArr, 8);
+  // byte byteArr[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
+  // int state = radio.transmit(byteArr, 8);
 
   if (state == ERR_NONE) {
     // the packet was successfully transmitted
