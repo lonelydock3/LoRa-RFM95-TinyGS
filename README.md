@@ -23,7 +23,7 @@ Once you have the "one-click installer" downloaded, open it and then upload the 
 
 From here follow the instructions on the Quick-Start guide to setup your basestation. 
 
-You're going to need to join the Telegram channel for TinyGS to get access to the TinyGS personal bot.  With this bot, you type "/mqtt" to get your MQTT username and password.  You put this username and password into your TinyGS basestation setup on the GUI, specifically where it says "MQTT Username" and "MQTT password".  (You can join the telegram channel, by navigating to the "Community" section on this link: https://github.com/G4lile0/tinyGS)
+You're going to need to join the Telegram channel for TinyGS to get access to the TinyGS personal bot (join using this link: https://t.me/joinchat/DmYSElZahiJGwHX6jCzB3Q).  With this bot, you type "/mqtt" to get your MQTT username and password.  You put this username and password into your TinyGS basestation setup on the GUI, specifically where it says "MQTT Username" and "MQTT password".  (You can also join the other telegram channels TinyGS has by navigating to the "Community" section on this link: https://github.com/G4lile0/tinyGS)
 
 Once your basestation parameters are filled out on the GUI, click "Apply" and then your device should connect to your internet.  From here, type in the IP Address shown on the ESP32 TTGO LoRa V1 into your browser to get access to the basestation dashboard.  We will now switch over to useing the Adafruit Feather M0.
 
@@ -41,7 +41,7 @@ From here you should be able to see that your basestation GUI says that the ESP3
 
 The following parameters should be the same (if possible) between the TinyGS basestation and the radio device that you are transmitting with:
 
-    {"mode":"LoRa","freq":915.0,"bw":250.0,"sf":10,"cr":5,"sw":18,"pwr":5,"cl":120,"pl":8,"gain":0,"crc":true,"fldro":2,"sat":"Norbi","NORAD":46494}
+    {"mode":"LoRa","freq":915.0,"bw":250.0,"sf":10,"cr":5,"sw":18,"pwr":5,"cl":120,"pl":8,"gain":0,"crc":true,"fldro":1,"sat":"Norbi","NORAD":46494}
 
 ### Past Issues 
 
