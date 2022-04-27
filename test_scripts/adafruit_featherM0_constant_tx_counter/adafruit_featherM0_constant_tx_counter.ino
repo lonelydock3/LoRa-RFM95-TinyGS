@@ -90,7 +90,7 @@ void setup()
     while (true);
   }
 
-  // set forceLDRO parameter to true so it matches the CRC parameter on the TinyGS side
+  // set forceLDRO parameter to true so it matches the forceLDRO parameter on the TinyGS side
   Serial.print(F("[RF95] Setting forceLDRO parameter ... "));
   state = radio.forceLDRO(true); // FLDRO = 1 on TinyGS side
   if (state == ERR_NONE) {
