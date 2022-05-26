@@ -19,7 +19,7 @@ Follow the steps to download the "one-click installer".
 
 You must also make sure your device can connect to the internet, so there is a mac address script to upload to your ESP32 TTGO LoRa V1 board if you need to get its mac address.  When you run this script, be sure that you have the correct board selected in the Boards Manager in the Arduino IDE.  To do this, select Tools > Board > ESP32 Arduino > TTGO LoRa32-OLED V1.
 
-Once you have the "one-click installer" downloaded, open it, select the port that your ESP32 TTGO LoRa V1 board is on (you can find this in the "Device Manager" application on your computer, under "Ports"), and then upload the code onto the ESP32 TTGO LoRa V1 board.  If you run into some issues with the code uploading to your board, run the "one-click installer" as an administrator on your computer.
+Once you have the "one-click installer" downloaded, open it, select the port that your ESP32 TTGO LoRa V1 board is on (you can find this in the "Device Manager" application on your computer, under "Ports"), and then upload the code onto the ESP32 TTGO LoRa V1 board.  If you run into some issues with the code uploading to your board, run the "one-click installer" as an administrator on your computer.  Also, if you previously used the MAC Address script, make sure you have the serial monitor from the Arduino IDE closed when you do this step.
 
 From here follow the instructions on the Quick-Start guide to setup your basestation. 
 
